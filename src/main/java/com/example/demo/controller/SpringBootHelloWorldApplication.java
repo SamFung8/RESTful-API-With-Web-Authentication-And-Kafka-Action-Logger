@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringBootHelloWorldApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootHelloWorldApplication.class, args);
+       SpringApplication.run(SpringBootHelloWorldApplication.class, args);
     }
 
 
