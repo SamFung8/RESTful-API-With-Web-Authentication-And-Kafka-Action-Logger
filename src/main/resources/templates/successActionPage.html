@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 id="actionMessage"></h1>
+        <a href="/">Finished</a>
+        
+        <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const actionValue = urlParams.get('action');
+
+        if (actionValue === 'add'){
+            document.getElementById('actionMessage').textContent = 'A new product added!';
+        }else if (actionValue === 'delete'){
+            document.getElementById('actionMessage').textContent = 'Deleted a product!';
+        }else if (actionValue === 'update'){
+            document.getElementById('actionMessage').textContent = 'Updated a product!';
+        }
+        </script>
+    </body>
+</html>

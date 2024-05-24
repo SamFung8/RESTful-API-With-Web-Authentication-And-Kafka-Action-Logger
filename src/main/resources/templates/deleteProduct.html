@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form id="productForm">
+            <label for="id">Product ID:</label>
+            <input type="number" id="id" name="id" step="1" required>
+
+            <button type="submit">Delete Product</button>
+        </form>
+
+
+        <script>
+            document.getElementById('productForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the form data
+                var id = document.getElementById('id').value;
+
+                // Send the product data to the server
+                sendProductToServer(id);
+            });
+
+            function sendProductToServer(productID) {
+                fetch('/api/v1/deleteProduct/' + productID, {
+                    method: 'DELETE'
+                })
+                        .then(function (response) {
+                            if (response.ok) {
+                                // Handle the successful response
+                                window.location.href = '/successActionPage?action=delete';
+                                console.log('Product deleted successfully');
+                            } else {
+                                // Handle the error response
+                                window.location.href = '/errorPage';
+                                console.error('Error deleteing product');
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error('Error:', error);
+                        });
+            }
+        </script>
+    </body>
+</html>

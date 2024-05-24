@@ -22,33 +22,33 @@ public class ProductController {
 
         //Create
 	@PostMapping("/addProduct")
-	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {            
 		Product newProduct = productService.saveProduct(product);
 		return ResponseEntity.ok(newProduct);
 	}
 
         //GetAll
-	@GetMapping("/products")
+	@GetMapping("/getProducts")
 	public List<Product> getAllProducts() {
 		return productService.getAllProducts();
 	}
 
         //GetById
-	@GetMapping("/products/{id}")
+	@GetMapping("/getProduct/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable Long id) {
 		Optional<Product> product = productService.getProductById(id);
 		return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
         //UpdateById
-	@PutMapping("/products/{id}")
+	@PutMapping("/updateProduct/{id}")
 	public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
 		Product updatedProduct = productService.updateProduct(id, product);
 		return ResponseEntity.ok(updatedProduct);
 	}
 
         //DeleteById
-	@DeleteMapping("/products/{id}")
+	@DeleteMapping("/deleteProduct/{id}")
 	public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
 		productService.deleteProduct(id);
 		return ResponseEntity.ok("Product deleted successfully");

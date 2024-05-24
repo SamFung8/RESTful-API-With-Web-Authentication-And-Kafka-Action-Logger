@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Spring Security Example</title>
+        <style>
+            ul li {
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome! Please choose a RESTful API function!</h1>
+
+        <ul>
+            <li><div><a href="/addProduct">Add a new product</a></div></li>
+            <li><div><a href="/deleteProduct">Delete a product by product ID</a></div></li>
+            <li><div><a href="/updateProduct">Update a product by product ID</a></div></li>
+            <li><div><a href="/getProduct">Get a product by product ID</a></div></li>
+            <li><div><a href="/api/v1/getProducts">Get all product</a></div></li>
+        </ul>
+    </body>
+</html>
