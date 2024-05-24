@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form id="productForm" action="/addProduct" method="get">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="price">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" step="1" required>
+
+            <button type="submit">Save Product</button>
+        </form>
+
+
+        <script>
+            document.getElementById('productForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the form data
+                var name = document.getElementById('name').value;
+                var price = parseFloat(document.getElementById('price').value);
+                var quantity = parseInt(document.getElementById('quantity').value);
+
+                // Create a new Product object
+                var product = {
+                    name: name,
+                    price: price,
+                    quantity: quantity
+                };
+
+                // Send the product data to the server
+                sendProductToServer(product);
+            });
+
+            function sendProductToServer(product) {
+                fetch('/api/v1/addProduct', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(product)
+                })
+                        .then(function (response) {
+                            if (response.ok) {
+                                // Handle the successful response
+                                console.log('Product saved successfully');
+                            } else {
+                                // Handle the error response
+                                console.error('Error saving product');
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error('Error:', error);
+                        });
+            }
+        </script>
+    </body>
+</html>
