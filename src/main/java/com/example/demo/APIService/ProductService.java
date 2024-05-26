@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.APIService;
 
-import com.example.demo.Product;
-import com.example.demo.ProductRepository;
+import com.example.demo.APIService.Product;
+import com.example.demo.APIService.ProductRepository;
 import org.springframework.stereotype.Service;
  
 import java.util.List;

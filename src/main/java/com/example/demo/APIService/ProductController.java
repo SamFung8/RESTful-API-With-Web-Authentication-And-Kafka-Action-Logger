@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.APIService;
 
-import com.example.demo.Product;
-import com.example.demo.ProductService;
+import com.example.demo.APIService.Product;
+import com.example.demo.APIService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
