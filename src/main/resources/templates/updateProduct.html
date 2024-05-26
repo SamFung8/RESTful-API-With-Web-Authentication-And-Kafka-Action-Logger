@@ -60,11 +60,11 @@ and open the template in the editor.
                         .then(function (response) {
                             if (response.ok) {
                                 // Handle the successful response
-                                window.location.href = '/successActionPage?action=update';
+                                window.location.href = '/actionPage?action=update';
                                 console.log('Product updated successfully');
                             } else {
                                 // Handle the error response
-                                window.location.href = '/errorPage';
+                                window.location.href = '/actionPage?action=error';
                                 console.error('Error updateing product');
                             }
                         })

@@ -31,11 +31,11 @@
                         .then(function (response) {
                             if (response.ok) {
                                 // Handle the successful response
-                                window.location.href = '/successActionPage?action=delete';
+                                window.location.href = '/actionPage?action=delete';
                                 console.log('Product deleted successfully');
                             } else {
                                 // Handle the error response
-                                window.location.href = '/errorPage';
+                                window.location.href = '/actionPage?action=error';
                                 console.error('Error deleteing product');
                             }
                         })
