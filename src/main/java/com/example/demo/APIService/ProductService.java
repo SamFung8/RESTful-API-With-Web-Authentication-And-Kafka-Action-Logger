@@ -1,5 +1,6 @@
 package com.example.demo.APIService;
 
+import com.example.demo.KafkaConfig.Producer;
 import com.example.demo.APIService.Product;
 import com.example.demo.APIService.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,14 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+    
+    private final Producer kafkaProducer;
+
+    public MessageController(Producer kafkaProducer) {
+        this.kafkaProducer = kafkaProducer;
+    }
+    
+    
  
     private final ProductRepository productRepository;
  
@@ -24,7 +33,7 @@ public class ProductService {
  
     //Get all the products.
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productRepository.findAll();        
     }
  
 
