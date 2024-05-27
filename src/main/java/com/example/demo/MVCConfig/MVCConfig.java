@@ -8,6 +8,9 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -27,11 +30,13 @@ public class MVCConfig implements WebMvcConfigurer {
 
         registry.addViewController("/actionPage").setViewName("actionPage");
     }
-
+    
     
     //Admin: full permit (create, get, update, delete)
     //SeniorUser: create, get, update
-    //NormalUser: get   
+    //NormalUser: get
+    
+ 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -40,10 +45,13 @@ public class MVCConfig implements WebMvcConfigurer {
                     .antMatchers(HttpMethod.GET, "/addProduct").hasAnyAuthority("Admin", "SeniorUser")
                     .antMatchers(HttpMethod.GET, "/updateProduct").hasAnyAuthority("Admin", "SeniorUser")
                     .antMatchers(HttpMethod.GET, "/deleteProduct").hasAnyAuthority("Admin")
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
             )
             .exceptionHandling()
-            .accessDeniedHandler(new CustomAccessDeniedHandler());
+            .accessDeniedHandler(new CustomAccessDeniedHandler())
+            .and()
+            .csrf()
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
         
         return httpSecurity.build();
     }

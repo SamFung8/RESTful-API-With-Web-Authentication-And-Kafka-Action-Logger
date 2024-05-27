@@ -2,7 +2,6 @@ package com.example.demo.APIService;
 
 import com.example.demo.APIService.Product;
 import com.example.demo.APIService.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +18,10 @@ public class ProductController {
 	public ProductController(ProductService productService) {
 		this.productService = productService;
 	}
-
+        
         //Create
 	@PostMapping("/addProduct")
-	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {            
+	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
 		Product newProduct = productService.saveProduct(product);
 		return ResponseEntity.ok(newProduct);
 	}

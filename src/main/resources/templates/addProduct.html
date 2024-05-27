@@ -39,28 +39,31 @@
                 sendProductToServer(product);
             });
 
-            function sendProductToServer(product) {
-                fetch('/api/v1/addProduct', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(product)
-                })
-                        .then(function (response) {
-                            if (response.ok) {
-                                // Handle the successful response
-                                window.location.href = '/actionPage?action=add';
-                                console.log('Product saved successfully');
-                            } else {
-                                // Handle the error response
-                                window.location.href = '/actionPage?action=error';
-                                console.error('Error saving product');
-                            }
-                        })
-                        .catch(function (error) {
-                            console.error('Error:', error);
-                        });
+            async function sendProductToServer(product) {
+                try {
+                    const response = await fetch('/api/v1/addProduct', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(product),
+                    });
+
+                    if (response.ok) {
+                        // Handle the successful response
+                        //window.location.href = '/actionPage?action=add';
+                        console.log(response);
+                        console.log('Product saved successfully');
+                    } else {
+                        // Handle the error response
+                        //window.location.href = '/actionPage?action=error';
+                        const errorData = await response.json();
+                        console.error('Error saving product:', errorData);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    //window.location.href = '/actionPage?action=error';
+                }
             }
         </script>
     </body>

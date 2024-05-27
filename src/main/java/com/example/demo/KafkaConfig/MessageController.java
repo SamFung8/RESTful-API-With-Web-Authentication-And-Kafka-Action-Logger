@@ -1,5 +1,5 @@
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+package com.example.demo.KafkaConfig;
+
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,9 +11,4 @@ public class MessageController {
         this.kafkaProducer = kafkaProducer;
     }
 
-    @PostMapping("/send")
-    public void sendMessageToKafka(@RequestBody String message) {
-        System.out.println("Message ");
-        kafkaProducer.sendMessage(message);
-    }
 }
