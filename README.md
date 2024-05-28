@@ -2,15 +2,15 @@
 
 This project is a Spring Boot-based web application that provides a RESTful API for managing a product catalog. The key features of this project include:
 
-• RESTful API: The application exposes a set of RESTful endpoints MYSQL DB for performing CRUD (Create, Read, Update, Delete) operations on product data using ORM(Object Relational Mapping) method.\
-• Web-based Authentication: The application includes a web-based authentication system, allowing users to securely access and interact with the product management functionality.\
-• Kafka Integration for Action Logging: The application integrates with Apache Kafka, a distributed streaming platform, to log user actions, such as creating, updating, or deleting products. These user actions are recorded in log files for auditing and analytics purposes.\
+• RESTful API: A set of RESTful endpoints connected with MYSQL DB for performing CRUD (Create, Read, Update, Delete) operations on data using ORM(Object Relational Mapping).\
+• Web-based Authentication: A web-based authentication system allows access to the different RESTful API functionalities based on user account(Admin, Senior User and Normal User).\
+• Kafka Integration for Web Action Logger: A distributed streaming platform used Apache Kafka to logging user RESTful actions(create, update, or delete) and recorded as log files for auditing and analytics.
 
 
-The main components of this project include:
+The main components packages of this project include:
 
-• Product Management Service: Responsible for handling CRUD operations on product data and communicating with the Kafka producer.\
-• Product Repository: A Spring Data JPA repository that provides the necessary database operations for the Product entity.\
-• Product Controller: The Spring MVC controller that exposes the RESTful API endpoints for managing products.\
-• Kafka Consumer: A Python script that subscribes to the Kafka topic and logs the user actions to local log files.\
-• This project demonstrates the integration of a Spring Boot-based web application with a Kafka-based logging system, providing a robust and scalable solution for managing a product catalog with user action tracking.\
+• APIService: Handles the RESTful API functionality, processing requests and responses.
+• ExceptionConfig: Manages exception handling and provides consistent error responses.
+• KafkaConfig: Configures the integration with Apache Kafka for distributed logging and event streaming.
+• MVCConfig: Sets up the Model-View-Controller architecture and web-based functionality.
+• SecurityConfig: Handles authentication, authorization, and access control for the application.
