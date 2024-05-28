@@ -1,6 +1,6 @@
 # RESTful-API-With-Web-Authentication-And-Kafka-Action-Logger
 
-This project is a Spring Boot-based web application that provides a RESTful API for managing a product catalog. The key features of this project include:
+This project is a Spring Boot-based web application that provides a RESTful API for managing the product catalog. The key features of this project include:
 
 • **RESTful API:** A set of RESTful endpoints connected with MYSQL DB for performing CRUD (Create, Read, Update, Delete) operations on data using ORM(Object Relational Mapping).<br><br>
 • **Web-based Authentication:** A web-based authentication system allows access to the different RESTful API functionalities based on user account(Admin, Senior User and Normal User).<br><br>
