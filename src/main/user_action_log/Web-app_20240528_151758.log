@@ -1,0 +1,8 @@
+2024-05-28 15:17:58 - INFO - 20240528_151758	User=admin	Createing A Product ID: 6
+2024-05-28 15:22:05 - INFO - 20240528_152205	User=admin	Createing A Product ID: 7
+2024-05-28 15:24:10 - INFO - 20240528_152410	User=admin	Createing A Product ID: 8
+2024-05-28 15:24:15 - INFO - 20240528_152415	User=admin	Deleteing Product ID: 8
+2024-05-28 15:24:29 - INFO - 20240528_152429	User=admin	Updateing Product ID: 7
+2024-05-28 15:24:40 - INFO - 20240528_152440	User=admin	Getting Product ID: 6
+2024-05-28 15:24:40 - INFO - 20240528_152440	User=admin	Getting Product ID: 6
+2024-05-28 15:24:43 - INFO - 20240528_152443	User=admin	Getting All Product

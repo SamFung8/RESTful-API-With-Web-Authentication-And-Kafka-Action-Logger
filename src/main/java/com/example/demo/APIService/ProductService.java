@@ -29,9 +29,10 @@ public class ProductService {
 
     //Save a product.
     public Product saveProduct(Product product) {
+        Product newProduct = productRepository.save(product);
         updateUser();
-        kafkaProducer.sendMessage(username, "Createing A Product ID" + product.getId().toString());
-        return productRepository.save(product);
+        kafkaProducer.sendMessage(username, "Createing A Product ID: " + newProduct.getId().toString());
+        return newProduct;
     }
 
     //Get all the products.
@@ -45,14 +46,14 @@ public class ProductService {
     //Get one product by ID.
     public Optional<Product> getProductById(Long id) {
         updateUser();
-        kafkaProducer.sendMessage(username, "Getting Product ID " + id.toString());
+        kafkaProducer.sendMessage(username, "Getting Product ID: " + id.toString());
         return productRepository.findById(id);
     }
 
     //Update a product.
     public Product updateProduct(Long id, Product updatedProduct) {
         updateUser();
-        kafkaProducer.sendMessage(username, "Updateing Product ID " + id.toString());
+        kafkaProducer.sendMessage(username, "Updateing Product ID: " + id.toString());
         Optional<Product> existingProduct = productRepository.findById(id);
         if (existingProduct.isPresent()) {
             Product product = existingProduct.get();
@@ -68,7 +69,7 @@ public class ProductService {
     //Delete the product by ID.
     public void deleteProduct(Long id) {
         updateUser();
-        kafkaProducer.sendMessage(username, "Deleteing Product ID " + id.toString());
+        kafkaProducer.sendMessage(username, "Deleteing Product ID: " + id.toString());
         productRepository.deleteById(id);
     }
 

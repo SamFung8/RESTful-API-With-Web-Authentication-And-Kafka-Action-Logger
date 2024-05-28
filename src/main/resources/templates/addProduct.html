@@ -20,6 +20,7 @@
 
 
         <script>
+
             document.getElementById('productForm').addEventListener('submit', function (event) {
                 event.preventDefault(); // Prevent the default form submission
 
@@ -51,12 +52,13 @@
 
                     if (response.ok) {
                         // Handle the successful response
-                        //window.location.href = '/actionPage?action=add';
+                        window.location.href = '/actionPage?action=add';
                         console.log(response);
+                        console.log(document.querySelector('input[name="_csrf"]'));
                         console.log('Product saved successfully');
                     } else {
                         // Handle the error response
-                        //window.location.href = '/actionPage?action=error';
+                        window.location.href = '/actionPage?action=error';
                         const errorData = await response.json();
                         console.error('Error saving product:', errorData);
                     }

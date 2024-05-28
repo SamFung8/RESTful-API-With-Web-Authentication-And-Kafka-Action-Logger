@@ -12,44 +12,44 @@ import java.util.Optional;
 @RequestMapping("/api/v1")
 public class ProductController {
 
-	private final ProductService productService;
+    private final ProductService productService;
 
-	
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
-        
-        //Create
-	@PostMapping("/addProduct")
-	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
-		Product newProduct = productService.saveProduct(product);
-		return ResponseEntity.ok(newProduct);
-	}
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
-        //GetAll
-	@GetMapping("/getProducts")
-	public List<Product> getAllProducts() {
-		return productService.getAllProducts();
-	}
+    //Create
+    @PostMapping("/addProduct")
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+        product.setId((long) 0);
+        Product newProduct = productService.saveProduct(product);
+        return ResponseEntity.ok(newProduct);
+    }
 
-        //GetById
-	@GetMapping("/getProduct/{id}")
-	public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-		Optional<Product> product = productService.getProductById(id);
-		return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-	}
+    //GetAll
+    @GetMapping("/getProducts")
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
+    }
 
-        //UpdateById
-	@PutMapping("/updateProduct/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
-		Product updatedProduct = productService.updateProduct(id, product);
-		return ResponseEntity.ok(updatedProduct);
-	}
+    //GetById
+    @GetMapping("/getProduct/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Optional<Product> product = productService.getProductById(id);
+        return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-        //DeleteById
-	@DeleteMapping("/deleteProduct/{id}")
-	public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
-		productService.deleteProduct(id);
-		return ResponseEntity.ok("Product deleted successfully");
-	}
+    //UpdateById
+    @PutMapping("/updateProduct/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        Product updatedProduct = productService.updateProduct(id, product);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    //DeleteById
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.ok("Product deleted successfully");
+    }
 }

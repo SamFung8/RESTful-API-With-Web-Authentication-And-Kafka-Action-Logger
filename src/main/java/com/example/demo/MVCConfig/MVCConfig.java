@@ -51,7 +51,8 @@ public class MVCConfig implements WebMvcConfigurer {
             .accessDeniedHandler(new CustomAccessDeniedHandler())
             .and()
             .csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            .ignoringAntMatchers("/api/v1/**/")
+            .ignoringAntMatchers("/actionPage");
         
         return httpSecurity.build();
     }
